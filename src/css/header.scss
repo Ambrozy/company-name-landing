@@ -1,0 +1,124 @@
+#header {
+  color: #fff;
+  background: url('img/header-bg.jpg') top center/cover;
+  padding: 24px 0 90px;
+  text-align: center;
+  a { color: currentColor; }
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.header-title {
+  font: 300 48px/48px 'Open Sans', Arial, sans-serif;
+  letter-spacing: 3.8px;
+  text-transform: uppercase;
+  margin-bottom: 75px;
+}
+.header-p {
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.logo {
+  color: #8dc63f;
+  font-size: 23px;
+  font-family: Arial, sans-serif;
+  letter-spacing: -.25px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  .l-img {
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .l-bold-name {
+    color: #287ec2;
+    font-weight: bold;
+  }
+}
+
+.header-menu {
+  margin: 0 -20px;
+  & > li {
+    display: inline-block;
+    padding: 0 20px;
+  }
+  .hm-dropdown {
+    position: relative;
+    white-space: nowrap;
+    &:hover > .hm-submenu {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .hm-submenu {
+    position: absolute;
+    padding: 10px 20px 15px;
+    background: $header-color;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    @include transition();
+    & > li {
+      border-bottom: 1px solid #3a4761;
+      & > a {
+        display: block;
+        padding: 5px 0;
+      }
+    }
+  }
+}
+.angle-down {
+  padding-right: 20px;
+  background: url('img/angle-down.svg') no-repeat center right/18px;
+}
+.header-auth {
+  margin: 0 -10px;
+  & > li {
+    display: inline-block;
+    padding: 0 10px;
+  }
+}
+
+.butter {
+  display: none;
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height: 30px;
+  background: #ddd;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  &.open > span {
+    &:nth-child(1) { transform: translate(0, 8px) rotate(45deg); }
+    &:nth-child(2) { opacity: 0; }
+    &:nth-child(3) { transform: translate(0, -8px) rotate(-45deg); }
+  }
+  & > span {
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    background: #0b172d;
+    opacity: 1;
+    @include transition();
+    &:nth-child(2) { top: 13px; }
+    &:nth-child(3) { top: 21px; }
+  }
+}
+
+@include media-breakpoint-down('md') {
+  .header-menu,
+  .header-auth { display: none; }
+  .butter { display: block; }
+}
+@include media-breakpoint-down('xs') {
+  .logo {
+    font-size: 20px;
+  }
+}
